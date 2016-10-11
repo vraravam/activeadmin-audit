@@ -1,0 +1,27 @@
+<% if additional_objects_snapshot.any? %>
+  <h3>Related objects snapshot</h3>
+  <table class='diff'>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% additional_objects_snapshot.each do |attr, values| %>
+        <tr>
+          <td class='attr-name'><%= attr.humanize %></td>
+          <td>
+            <ul>
+              <% values.each do |value| %>
+              <li>
+                <%= pretty_version_attribute_value(attr, value) %>
+              </li>
+              <% end %>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

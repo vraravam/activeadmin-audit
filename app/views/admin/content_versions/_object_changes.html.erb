@@ -1,0 +1,24 @@
+<% if object_changes.any? %>
+  <h3>Object changes</h3>
+  <table class='diff'>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Old value</th>
+        <th>New value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% object_changes.each do |attr, diff|
+        old_value, new_value = diff
+        old_class, new_class = versions_diff_classes(old_value, new_value)
+      %>
+        <tr>
+          <td class='attr-name'><%= attr.humanize %></td>
+          <td class='old_class'><%= pretty_version_attribute_value(attr, old_value) %></td>
+          <td class='new_class'><%= pretty_version_attribute_value(attr, new_value) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
