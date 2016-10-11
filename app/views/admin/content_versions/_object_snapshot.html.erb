@@ -1,0 +1,19 @@
+<% if object_snapshot.any? %>
+  <h3>Object snapshot</h3>
+  <table class='diff'>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% object_snapshot.each do |attr, value| %>
+        <tr>
+          <td class='attr-name'><%= attr.humanize %></td>
+          <td class='old_class'><%= pretty_version_attribute_value(attr, value) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
